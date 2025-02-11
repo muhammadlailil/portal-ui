@@ -1,0 +1,3 @@
+<div class="flex [&>.group-input:first-child>input]:border-r-0 [&>.group-input:first-child>input]:rounded-r-none  [&>.prefix:last-child]:rounded-l-none [&>.prefix:first-child]:border-r-0 [&>.prefix:first-child]:rounded-r-none [&>button:first-child]:border-r-0 [&>button:first-child]:rounded-r-none [&>button:last-child]:rounded-l-none  [&>div:last-child>input]:rounded-l-none group">
+    {{ $slot }}
+</div>

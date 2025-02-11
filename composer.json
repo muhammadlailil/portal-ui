@@ -1,0 +1,29 @@
+{
+     "name": "laililmahfud/portal-ui",
+     "description": "Re-usable components for Laravel x Tailwind CSS x Alpine JS",
+     "license": "MIT",
+     "autoload": {
+         "psr-4": {
+             "Laililmahfud\\PortalUi\\": "src/"
+         }
+     },
+     "authors": [
+         {
+             "name": "laililmahfud",
+             "email": "laililmahvut@gmail.com"
+         }
+     ],
+     "minimum-stability": "dev",
+     "require": {
+        "php": "^8.2",
+        "secondnetwork/blade-tabler-icons": "*",
+        "feature-ninja/cva": "^0.3.0"
+     },
+     "extra": {
+        "laravel": {
+            "providers": [
+                "Laililmahfud\\PortalUi\\PortalUiServiceProvider"
+            ]
+        }
+    }
+ }
