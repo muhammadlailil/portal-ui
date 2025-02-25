@@ -2,7 +2,7 @@
 @php
     $combobox = fn\cva(
         [
-            'w-full border rounded-md border-input flex items-center file:bg-transparent file:text-sm file:font-medium cursor-pointer',
+            'w-full border rounded-md border-input flex items-center cursor-pointer relative z-[1] bg-background',
         ],
         [
             'variants' => [
@@ -53,7 +53,7 @@
         this.filtered = this.items
     }
 }" class="relative">
-    <input type="hidden" name="{{ $name }}" x-model="value">
+    <input @required($attributes->get('required')) name="{{ $name }}" x-model="value" class="absolute top-2 outline-none pointer-events-none ml-2">
     <button type="button" {{ $attributes->merge(['class' => $combobox(['size' => $size])]) }} x-on:click="open=!open"
         x-ref="combobox">
         <div class="flex items-center justify-between w-full">
@@ -68,13 +68,13 @@
         x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-300"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
-    <div class="sm:relative fixed inset-0 z-10 sm:w-full w-screen flex items-end" x-show="open" x-cloak >
-        <div x-show="open" x-cloak x-anchor.bottom-start="$refs.combobox" x-on:click.away="open=false"
+    <div class="sm:relative fixed inset-0 z-10 sm:w-full w-screen flex items-end" x-show="open" x-cloak>
+        <div x-show="open" x-cloak x-anchor.bottom-start.offset.6="$refs.combobox" x-on:click.away="open=false"
             x-transition:enter-end="translate-y-0"
-            class="absolute bg-background border rounded-md text-left right-0 w-full z-10 mt-2 mb-2 shadow-md max-h-[50vh] overflow-auto combobox-content">
+            class="absolute bg-background border rounded-md text-left right-0 w-full z-10 shadow-md max-h-[50vh] overflow-auto combobox-content">
             {{ $slot }}
             <div class="py-6 text-center text-sm" cmdk-empty="" role="presentation" x-show="!filtered.length" x-cloak>
-                No  items found.
+                No items found.
             </div>
         </div>
     </div>

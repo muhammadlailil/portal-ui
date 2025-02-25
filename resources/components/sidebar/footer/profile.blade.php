@@ -1,4 +1,4 @@
-@props(['title', 'description', 'profile', 'alias' => ''])
+@props(['title', 'description', 'profile' => '', 'alias' => ''])
 
 <div {{$attributes->merge(['class'=>'flex w-full min-w-0 flex-col gap-1'])}}>
     <x-portal::dropdown-menu>

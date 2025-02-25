@@ -18,13 +18,13 @@
         $icon = 'up';
     }
 @endphp
-<th {{ $attributes->merge(['class' => 'px-5 py-3 text-sm font-medium text-muted-foreground text-left uppercase']) }}>
+<th {{ $attributes->merge(['class' => 'px-5 py-3 text-sm font-medium text-muted-foreground text-left']) }}>
     <{{ $as }} href="{{ $href }}"
-        class="flex space-x-2 items-center uppercase [&>.icon]:opacity-50 hover:[&>.icon]:opacity-100">
+        class="flex space-x-2 items-center [&>.icon]:opacity-50 hover:[&>.icon]:opacity-100">
         {{ $slot }}
         @if ($sortable)
             @svg('tabler-chevron-' . $icon, [
-                'class' => 'h-4 icon',
+                'class' => 'h-3.5 icon !opacity-100',
             ])
         @endif
         </{{ $as }}>

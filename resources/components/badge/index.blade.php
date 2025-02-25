@@ -11,7 +11,7 @@
         [
             'variants' => [
                 'variant' => [
-                    'default' => '!border-transparent',
+                    'default' => '',
                     'outline' => 'border',
                     'solid' => '!border-transparent text-white'
                 ],

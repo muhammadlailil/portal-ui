@@ -2,7 +2,7 @@
 
 @php
     $dialog = fn\cva(
-        ['relative transform overflow-hidden rounded-lg bg-background border text-left shadow-xl transition-all sm:my-8 sm:w-full'],
+        ['relative transform rounded-lg bg-background border text-left shadow-xl transition-all sm:my-8 sm:w-full'],
         [
             'variants' => [
                 'size' => [

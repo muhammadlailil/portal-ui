@@ -50,7 +50,7 @@
         'disabled:!cursor-not-allowed disabled:opacity-50 disabled:border disabled:shadow-sm disabled:border-input' => $attributes->get(
             'disabled',
         ),
-        'read-only:border-none read-only:bg-zinc-800/5 read-only:shadow-none' => $attributes->get('readonly'),
+        'read-only:bg-zinc-800/5 read-only:shadow-none' => $attributes->get('readonly'),
         'border-red-600' => $attributes->get('invalid'),
         $input([
             'size' => $size,

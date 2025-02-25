@@ -7,7 +7,8 @@
         {{ $label }}
     </x-portal::label>
     <div class="!w-[75px]">
-        <x-portal::combobox {{ $attributes }} name="limit" id="pagination-limit" value="{{ $limit }}">
+        <x-portal::combobox {{ $attributes->merge(['class' => 'h-[35px]']) }} name="limit" id="pagination-limit"
+            value="{{ $limit }}">
             <x-portal::combobox.content>
                 @foreach ($limits as $option)
                     <x-portal::combobox.option
