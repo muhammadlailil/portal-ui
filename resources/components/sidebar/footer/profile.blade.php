@@ -7,7 +7,7 @@
             x-ref="dropdownTrigger" x-on:click="menuOpen=!menuOpen">
             <x-portal::avatar class="!rounded-lg !h-8 !w-8">
                 <x-portal::avatar.image src="{{ $profile }}" alt="{{ $title }}" class="!rounded-lg !border" />
-                <x-portal::avatar.fallback class="!rounded-lg !border">{{ $alias }}</x-portal::avatar.fallback>
+                <x-portal::avatar.fallback class="!rounded-lg !border text-sm">{{ $alias }}</x-portal::avatar.fallback>
             </x-portal::avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
                 <span class="truncate font-semibold">
@@ -17,7 +17,7 @@
                     {{ $description }}
                 </span>
             </div>
-            <x-portal::icon.up-down class="h-4" />
+            <x-portal::icon.up-down class="h-4 mt-[3px]" />
         </button>
         <x-portal::dropdown-menu.content class="w-56" side="right" align="end">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">

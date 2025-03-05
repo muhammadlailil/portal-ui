@@ -2,7 +2,8 @@
     'disabled' => false,
     'inset' => false,
     'variant' => null,
-    'as' => 'div'
+    'as' => 'div',
+    'dismissible' => false
 ])
 @php
     $variantColor = fn\cva(
@@ -47,6 +48,9 @@
         'opacity-50 !cursor-not-allowed select-none' => $disabled,
         'pl-8' => $inset,
     ]) }}
+    @if($dismissible)
+        x-on:click="menuOpen=false"
+    @endif
         {{ $attributes->when($disabled, function ($attributes) {
                 return $attributes->except(['x-on:click']);
             })->except(['class']) }}>

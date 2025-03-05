@@ -30,7 +30,11 @@
     filtered: [],
     addItem(el) {
         const selected = el.getAttribute('selected')
-        this.items.push(this.getElementContent(el))
+        this.items.push({
+            label : this.getElementContent(el),
+            value : el.getAttribute('data-value'),
+            el : el
+        })
         this.filtered = this.items
         if (selected) {
             this.value = el.getAttribute('data-value')
@@ -38,7 +42,7 @@
         }
     },
     filter() {
-        this.filtered = this.items.filter((row) => row.toLowerCase().includes(this.search.toLowerCase()))
+        this.filtered = this.items.filter((row) => row.label.toLowerCase().includes(this.search.toLowerCase()))
     },
     getElementContent(el) {
         return el.innerText.replace(/(^\s*)|(\s*$)/gi, '').replace(/[ ]{2,}/gi, ' ').replace(/\n +/, '\n')
@@ -51,9 +55,26 @@
         this.label = content
         this.search = ''
         this.filtered = this.items
+    },
+    changeValue($el){
+        if($el.target.value){
+            const item = this.items.find((row)=>row.value==$el.target.value.toString())
+            if(item){
+                this.value = item.el.getAttribute('data-value')
+                this.label = item.el.innerHTML
+            }
+        }else{
+            this.value = ''
+            this.label = ''
+        }
     }
-}" class="relative">
-    <input @required($attributes->get('required')) name="{{ $name }}" x-model="value" class="absolute top-2 outline-none pointer-events-none ml-2">
+}" class="relative combobox">
+    <select @required($attributes->get('required')) name="{{ $name }}" x-model="value" x-on:change="changeValue" class="absolute pointer-events-none w-full outline-none">
+        <option value=""></option>
+        <template x-for="item in filtered">
+            <option x-bind:value="item.value"></option>
+        </template>
+    </select>
     <button type="button" {{ $attributes->merge(['class' => $combobox(['size' => $size])]) }} x-on:click="open=!open"
         x-ref="combobox">
         <div class="flex items-center justify-between w-full">

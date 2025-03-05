@@ -19,7 +19,7 @@
         ],
     );
 @endphp
-<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" x-cloak>
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" x-cloak id="dialog-{{$id}}">
     <div class="fixed inset-0 bg-black/80 transition-opacity" aria-hidden="true" x-cloak
         x-show="dialog=='{{ $id }}'" x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"

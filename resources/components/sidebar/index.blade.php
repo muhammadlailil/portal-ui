@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'group peer text-sidebar-foreground fixed md:relative transition-[left,right,width] duration-500 z-1']) }}
+<div {{ $attributes->merge(['class' => 'group peer text-sidebar-foreground fixed md:relative transition-[left,right,width] duration-500 z-[10]']) }}
     x-bind:data-state="state" x-bind:data-mobile="sidebarMobile">
     <div
         class="w-[var(--sidebar-width)] group-data-[state=collapsed]:w-[var(--sidebar-width-icon)] bg-transparent transition-[left,right,width] duration-200 ease-linear">

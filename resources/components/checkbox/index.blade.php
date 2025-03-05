@@ -3,7 +3,7 @@
     'description' => null,
 ])
 <label for="{{ $attributes->get('id') }}"
-    class="space-x-2 checkbox-item peer-disabled:cursor-not-allowed peer-disabled:opacity-3 group has-[:checked]:border-zinc-800 cursor-pointer bg-background">
+    class="space-x-2 checkbox-item peer-disabled:cursor-not-allowed peer-disabled:opacity-3 group has-[:checked]:border-zinc-800 cursor-pointer bg-background flex gap-[5px] w-fit">
     <input type="checkbox"
         {{ $attributes->merge(['class' => 'peer rounded-[.3rem] h-4.5 w-4.5 shrink-0 checked:text-primary dark:bg-background dark:checked:bg-white disabled:cursor-not-allowed disabled:opacity-50']) }} />
 

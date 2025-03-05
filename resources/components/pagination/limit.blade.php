@@ -3,7 +3,7 @@
     $limits = [10, 20, 50, 100, 150];
 @endphp
 <div class="flex gap-2 items-center">
-    <x-portal::label class="whitespace-nowrap">
+    <x-portal::label class="whitespace-nowrap hidden sm:block">
         {{ $label }}
     </x-portal::label>
     <div class="!w-[75px]">
