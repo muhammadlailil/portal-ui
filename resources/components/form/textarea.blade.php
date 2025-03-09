@@ -14,7 +14,7 @@
             {{ $description }}
         </x-portal::form.description>
     @endif
-    <x-portal::textarea {{ $attributes }} />
+    <x-portal::textarea {{ $attributes }}>{{$slot}}</x-portal::textarea>
 
     @if ($descriptionTrailing)
         <x-portal::form.description>
