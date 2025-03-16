@@ -1,3 +1,3 @@
-<form x-data="{ submited: false }" x-on:submit="submited=true" {{ $attributes->merge(['class' => 'space-y-5']) }}>
+<form x-data="{ submitted: false }" x-on:submit="submitted=true" {{ $attributes->merge(['class' => 'space-y-5']) }}>
     {{ $slot }}
 </form>
