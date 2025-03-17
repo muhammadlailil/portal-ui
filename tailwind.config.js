@@ -5,7 +5,7 @@ module.exports = {
           '../../../resources/views/**/*.blade.php',
           '../../../resources/views/**/**/*.blade.php',
           '../../../resources/views/*.blade.php',
-          './resources/components/**/*.blade.php'
+          './resources/components/**/*.blade.php',
     ],
 
     theme: {

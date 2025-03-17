@@ -27,7 +27,7 @@
     );
 @endphp
 
-<div class="relative">
+<div class="relative datepicker-input">
     <input {{ $attributes->merge(['class' => $datepicker(['size' => $size])]) }} />
     @if ($icon == 'time')
         <x-tabler-clock class="opacity-50 h-5 absolute right-4 top-2.5 pointer-events-none" />

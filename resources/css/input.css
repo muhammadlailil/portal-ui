@@ -183,6 +183,11 @@
         -webkit-appearance: none;
         margin: 0;
     }
+
+    
+    .datepicker-input .flatpickr-wrapper{
+        width: 100%;
+    }
 }
 [x-cloak] {
     display: none !important;

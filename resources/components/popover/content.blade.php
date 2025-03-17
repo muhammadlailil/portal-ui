@@ -9,6 +9,6 @@
 @endphp
 <div x-ref="popoverContent" x-show="open" x-cloak x-anchor.{{ $alignment }}{{ $sideOffset }}="$refs.triggerPopover"
     x-on:click.outside="close($refs.triggerPopover)" x-transition:enter.origin.top.right
-    {{ $attributes->merge(['class' => 'absolute z-50 p-4 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md']) }}>
+    {{ $attributes->merge(['class' => 'absolute z-50 p-4 rounded-md border bg-popover text-popover-foreground shadow-md']) }}>
     {{ $slot }}
 </div>
