@@ -8,6 +8,9 @@
 <x-portal::form.item name="{{$name}}">
     <x-portal::form.label>
         {{ $label }}
+        @if($attributes->get('required'))
+            <span class="text-red-500">*</span>
+        @endif
     </x-portal::form.label>
 
     @if ($description)

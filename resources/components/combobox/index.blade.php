@@ -30,9 +30,10 @@
     filtered: [],
     addItem(el) {
         const selected = el.getAttribute('selected')
+        const value = el.getAttribute('data-value')
         this.items.push({
-            label : this.getElementContent(el),
-            value : el.getAttribute('data-value'),
+            label : this.getElementContent(el) || value,
+            value : value,
             el : el
         })
         this.filtered = this.items
@@ -55,6 +56,11 @@
         this.label = content
         this.search = ''
         this.filtered = this.items
+        window.dispatchEvent(
+            new CustomEvent('select-{{ $name }}-change', {
+                detail : el
+            })
+        )
     },
     changeValue($el){
         if($el.target.value){
@@ -72,7 +78,7 @@
     <select @required($attributes->get('required')) name="{{ $name }}" x-model="value" x-on:change="changeValue" class="absolute pointer-events-none w-full outline-none">
         <option value=""></option>
         <template x-for="item in filtered">
-            <option x-bind:value="item.value"></option>
+            <option x-bind:value="item.value" x-html="item.value"></option>
         </template>
     </select>
     <button type="button" {{ $attributes->merge(['class' => $combobox(['size' => $size])]) }} x-on:click="open=!open"
