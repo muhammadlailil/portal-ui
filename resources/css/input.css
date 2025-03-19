@@ -184,9 +184,11 @@
         margin: 0;
     }
 
-    
-    .datepicker-input .flatpickr-wrapper{
+    .flatpickr-wrapper{
         width: 100%;
+    }
+    .flatpickr-wrapper input{
+        width: 100% !important;
     }
 }
 [x-cloak] {
