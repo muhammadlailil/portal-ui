@@ -3,6 +3,7 @@ namespace Laililmahfud\PortalUi;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Laililmahfud\PortalUi\PublishCssProperties;
 
 class PortalUiServiceProvider extends ServiceProvider
 {
@@ -66,6 +67,12 @@ class PortalUiServiceProvider extends ServiceProvider
           $this->registerBladeDirective();
 
           $this->assetPublisher();
+
+          if ($this->app->runningInConsole()) {
+               $this->commands([
+                   PublishCssProperties::class,
+               ]);
+           }
      }
 
      private function assetPublisher()
