@@ -7,10 +7,10 @@
         [
             'variants' => [
                 'size' => [
-                    'default' => 'h-10 px-4 text-sm',
-                    'sm' => 'h-8 px-3 text-xs',
-                    'lg' => 'h-12 px-5',
-                    'xl' => 'h-13 px-6 text-lg',
+                    'default' => 'min-h-10 px-4 text-sm',
+                    'sm' => 'min-h-8 px-3 text-xs',
+                    'lg' => 'min-h-12 px-5',
+                    'xl' => 'min-h-13 px-6 text-lg',
                 ],
             ],
             'defaultVariants' => [
@@ -23,10 +23,10 @@
 
 <div x-data="{
     open: false,
-    multiple : false,
+    multiple : true,
     search: '',
-    value: '',
-    label: '',
+    selecteds : [],
+    values : [],
     items: [],
     filtered: [],
     addItem(el) {
@@ -39,8 +39,10 @@
         })
         this.filtered = this.items
         if (selected) {
-            this.value = el.getAttribute('data-value')
-            this.label = el.innerHTML
+               this.selecteds.push({
+                    value : el.getAttribute('data-value'),
+                    label : el.innerHTML
+               })
         }
     },
     filter() {
@@ -52,9 +54,16 @@
     selectItem(el) {
         const value = el.getAttribute('data-value')
         const content = el.innerHTML
-        this.open = false
-        this.value = value
-        this.label = content
+        if(!this.selecteds.map((row)=>row.value).includes(value)){
+          this.selecteds.push({
+               value : value,
+               label : content
+          })
+          this.values.push(value)
+        }else{
+          this.selecteds = this.selecteds.filter((row)=>row.value!=value)
+          this.values = this.values.filter((row)=>row!=value)
+        }
         this.search = ''
         this.filtered = this.items
         window.dispatchEvent(
@@ -64,20 +73,23 @@
         )
     },
     changeValue($el){
-    console.log($el)
-        if($el.target.value){
-            const item = this.items.find((row)=>row.value==$el.target.value.toString())
-            if(item){
-                this.value = item.el.getAttribute('data-value')
-                this.label = item.el.innerHTML
-            }
-        }else{
-            this.value = ''
-            this.label = ''
-        }
+          if($el.target.getAttribute('selected')){
+               let values = $el.target.getAttribute('selected').toString()
+               values = values.split(',');
+               const items = this.items.filter((row)=>values.includes(row.value)).map((row)=>{
+                    return {
+                         value : row.value,
+                         label : row.label
+                    }
+               })
+               this.values = items.map((row)=>row.value)
+               this.selecteds = items
+          }else{
+              this.selecteds = []
+          }
     }
 }" class="relative combobox">
-    <select @required($attributes->get('required')) name="{{ $name }}" x-model="value" x-on:change="changeValue" class="absolute pointer-events-none w-full outline-none">
+    <select @required($attributes->get('required')) multiple name="{{ $name }}" x-model="values" x-on:change="changeValue" class="rounded-md h-4 absolute pointer-events-none w-fit outline-none bg-transparent">
         <option value=""></option>
         <template x-for="item in filtered">
             <option x-bind:value="item.value" x-html="item.value"></option>
@@ -86,10 +98,10 @@
     <button type="button" {{ $attributes->merge(['class' => $combobox(['size' => $size])]) }} x-on:click="open=!open"
         x-ref="combobox">
         <div class="flex items-center justify-between w-full">
-            <span class="text-muted-foreground select-none" x-show="label==''">
+            <span class="text-muted-foreground select-none" x-show="!selecteds.length">
                 {{ @$placeholder ?: $attributes->get('value') }}
             </span>
-            <span x-html="label" x-show="label!=''" class="flex gap-2"></span>
+            <span x-html="selecteds.map((row)=>row.label).toString()" x-show="selecteds.length" class="flex gap-2 text-left py-2"></span>
             <x-portal::icon.up-down class="opacity-50 h-4 mr-[-5px]" />
         </div>
     </button>

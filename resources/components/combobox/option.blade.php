@@ -6,5 +6,10 @@
         x-show="filtered.find((row)=>row.value=='{{ $value }}')" data-value="{{ $value }}">
         {{ $slot }}
     </button>
-    <x-tabler-check x-cloak x-show="value=='{{ $value }}'" class="h-4 w-4 absolute right-3 top-2" />
+    <template x-if="!multiple">
+        <x-tabler-check x-cloak x-show="value=='{{ $value }}'" class="h-4 w-4 absolute right-3 top-2"/>
+    </template>
+    <template x-if="multiple">
+        <x-tabler-check x-cloak x-show="selecteds.map((row)=>row.value).includes('{{ $value }}')" class="h-4 w-4 absolute right-3 top-2"/>
+    </template>
 </div>
