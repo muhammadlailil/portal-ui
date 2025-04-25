@@ -101,7 +101,7 @@
             <span class="text-muted-foreground select-none" x-show="!selecteds.length">
                 {{ @$placeholder ?: $attributes->get('value') }}
             </span>
-            <span x-html="selecteds.map((row)=>row.label).toString()" x-show="selecteds.length" class="flex gap-2 text-left py-2"></span>
+            <span x-html="selecteds.map((row)=>row.label).toString()" x-show="selecteds.length" class="flex gap-2 text-left py-2" style="white-space: normal;"></span>
             <x-portal::icon.up-down class="opacity-50 h-4 mr-[-5px]" />
         </div>
     </button>
