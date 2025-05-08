@@ -54,6 +54,7 @@
     selectItem(el) {
         const value = el.getAttribute('data-value')
         const content = el.innerHTML
+        this.filtered = this.items
         if(!this.selecteds.map((row)=>row.value).includes(value)){
           this.selecteds.push({
                value : value,
@@ -65,7 +66,6 @@
           this.values = this.values.filter((row)=>row!=value)
         }
         this.search = ''
-        this.filtered = this.items
         window.dispatchEvent(
             new CustomEvent('select-{{ $name }}-change', {
                 detail : el
@@ -91,7 +91,7 @@
 }" class="relative combobox">
     <select @required($attributes->get('required')) multiple name="{{ $name }}" x-model="values" x-on:change="changeValue" class="rounded-md h-4 absolute pointer-events-none w-fit outline-none bg-transparent">
         <option value=""></option>
-        <template x-for="item in filtered">
+        <template x-for="item in items">
             <option x-bind:value="item.value" x-html="item.value"></option>
         </template>
     </select>

@@ -53,10 +53,10 @@
         const value = el.getAttribute('data-value')
         const content = el.innerHTML
         this.open = false
+        this.filtered = this.items
         this.value = value
         this.label = content
         this.search = ''
-        this.filtered = this.items
         window.dispatchEvent(
             new CustomEvent('select-{{ $name }}-change', {
                 detail : el
@@ -79,7 +79,7 @@
 }" class="relative combobox">
     <select @required($attributes->get('required')) name="{{ $name }}" x-model="value" x-on:change="changeValue" class="absolute pointer-events-none w-full outline-none">
         <option value=""></option>
-        <template x-for="item in filtered">
+        <template x-for="item in items">
             <option x-bind:value="item.value" x-html="item.value"></option>
         </template>
     </select>
