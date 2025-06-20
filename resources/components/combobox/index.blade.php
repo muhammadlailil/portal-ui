@@ -64,7 +64,6 @@
         )
     },
     changeValue($el){
-    console.log($el)
         if($el.target.value){
             const item = this.items.find((row)=>row.value==$el.target.value.toString())
             if(item){
