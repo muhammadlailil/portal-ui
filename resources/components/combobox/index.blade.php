@@ -39,8 +39,9 @@
         })
         this.filtered = this.items
         if (selected) {
+            const label = el.innerHTML
             this.value = el.getAttribute('data-value')
-            this.label = el.innerHTML
+            this.label = label.replace(/\s+/g, '') !='' ? label : el.getAttribute('data-label')
         }
     },
     filter() {
