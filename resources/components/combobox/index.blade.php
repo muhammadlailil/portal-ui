@@ -48,7 +48,11 @@
         this.filtered = this.items.filter((row) => row.label.toLowerCase().includes(this.search.toLowerCase()))
     },
     getElementContent(el) {
-        return el.innerText.replace(/(^\s*)|(\s*$)/gi, '').replace(/[ ]{2,}/gi, ' ').replace(/\n +/, '\n')
+        var text =  el.innerText.replace(/(^\s*)|(\s*$)/gi, '').replace(/[ ]{2,}/gi, ' ').replace(/\n +/, '\n')
+        if(text){
+            return text
+        }
+        return el.getAttribute('data-label')
     },
     selectItem(el) {
         const value = el.getAttribute('data-value')
